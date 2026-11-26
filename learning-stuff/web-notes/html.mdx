@@ -1,0 +1,1288 @@
+# HTML
+
+## Summary
+
+- Content sectioning
+  - `<address>` - Contact information - name, physical address, URL, email address, phone number, social media handle, GPS coordinates.
+  - `<article>` - Independent item of content that can be consumed without the context of the website - blog post, forum post, news article, product card, comments.
+  - `<aside>` - Content that is only indirectly related to the main content, and can be removed without affecting the page - trending topics, call-out box, glossary, footnotes, ads, profile snippet, related articles.
+  - `<footer>` - Concluding content of a section - category tags, author bio, read more links, timestamps, legal disclaimers, copywright notice.
+  - `<header>` - Introductory content or navigational aids - heading element, logo, search form, author name.
+  - `<h1>-<h6>`- Headings to construct table of contents.
+  - `<hgroup>` - Group heading tag with `<p>` tag.
+  - `<main>` - Content unique to the document.
+  - `<nav>` - Provide navigational links either within the current document or to other documents - menus, table of contents, indexes, prose.
+  - `<section>` - Generic standalone section of document, that does not fit in other _Content Sectioning_ tags.
+  - `<search>` - Part of document with `<form>` for search or filtering on the current page or the entire site.
+- Block level elements
+  - `<blockquote>`, `<cite>` - Direct quote from external source.
+  - `<div>` - Group elements and to style elements.
+  - `<dl>`, `<dt>`, `<dd>` - List - key/value pairs.
+  - `<figure>`, `<figcaption>` - Self-contained content that is referenced in the main flow of document, and can be moved to other parts of the document without breaking flow - image, diagram, code snippet, table.
+  - `<hr>` - Thematic break between `<p>` elements - change of scene, shit of topic.
+  - `<menu>`, `<li>` - List - items are interactive.
+  - `<ol>`, `<li>` - List - order of items matter.
+  - `<ul>`, `<li>` - List - order of items does not matter.
+  - `<p>` - Group related content - images, form fields, block of text.
+  - `<pre>` - Show preformatted text.
+- Inline elements
+  - `<a>` - Hyperlink.
+  - `<abbr>` - Abbreviation (e.g.) or acronym (NATO).
+  - `<b>` - Draw attention to content without giving special importance - keywords in summary, product name in review, boldface due to writing convention.
+  - `<bdi>` - Tell browser bidirectional algorithm to treat the content in isolation from its surrounding text.
+  - `<bdo>` - Force browser to render content in the provided direction.
+  - `<br>` - Line break in text, where division of lines is insignificant.
+  - `<code>` - Represent single phrase of code.
+  - `<del>` - Deleted text.
+  - `<dfn>` - Indicate a term, whose definition can be found in the ancestor node.
+  - `<em>` - Indicate stress emphasis.
+  - `<i>` - Make text look different from the normal prose for readability reason, writing convention - technical terms, thoughts.
+  - `<ins>` - Inserted text.
+  - `<kbd>` - Represent user input from some text entry device - keyboard, voice, touch, buttons.
+  - `<mark>` - Denote portion of document's content which is likely to be relevant to the user's current activity - use it for words that match a search operation.
+  - `<q>`, `<cite>` - Direct quote from external source.
+  - `<samp>` - Static system message from computer program.
+  - `<small>` - Side comments and small print - copywright, legal text.
+  - `<span>` - Group related content and to style.
+  - `<strong>` - Indicate content is of strong importance, seriousness, urgency, warnings.
+  - `<sub>` - Subscript.
+  - `<sup>` - Superscript.
+  - `<time>` - Machine readable time representation of a period of time.
+  - `<u>` - Mark text to have non-textual annotation - spelling error.
+  - `<var>` - Represent name of variable - maths equation.
+  - `<wbr>` - Hint to browser for word break opportunity.
+- Media elements
+  - `<audio>`
+  - `<embed>` - Cannot provide fallback content.
+  - `<fencedframe>` - `<iframe>` but with security and privacy features.
+  - `<iframe>`
+  - `<img>`
+  - `<picture>`
+  - `<video>`
+- Scripting elements
+  - `<canvas>`
+  - `<noscript>`
+  - `<script>`
+- Table elements
+
+## \<html>
+
+```html
+<!doctype html>
+<html lang="en-US"></html>
+```
+
+## \<head>
+
+Order of `<head>` elements
+
+- [Chrome extension](https://chromewebstore.google.com/detail/capo-get-your-%EF%B9%A4%F0%9D%9A%91%F0%9D%9A%8E%F0%9D%9A%8A%F0%9D%9A%8D%EF%B9%A5/ohabpnaccigjhkkebjofhpmebofgpbeb) - Click extension to run and view results in console.
+- [Online demo](https://rviscomi.github.io/capo.js/user/demo/) - Paste HTML or URL to test.
+
+### \<title>
+
+- Search engines show first 55-60 characters.
+- Specify primary purpose of the page, followed by name of website. Example `Menu - Blue House Chinese Food - Food: Online takeout today!`.
+- During form submission errors, update title to reflect the error. Example `2 errors - Your order - Sea Food Store - Food: Online takeout today!`.
+- Screen readers do not announce title changes. Use _Aria Live Regions_.
+
+```html
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+
+  <title>Page title</title>
+
+  <!-- Do TCP handshake. Critical stuff like external font, CDN.
+       For non-critical use dns-prefetch -->
+  <link rel="preconnect" href="https://example.com" />
+
+  <!-- Download. Pause HTML parsing. Execute. Resume HTML parsing. -->
+  <script src="" async></script>
+  <!-- Pause HTML parsing. Download and execute. Resume HTML parsing.
+       Following stylesheets will be downloaded in parallel.
+       Inline scripts preferred over this. -->
+  <script src=""></script>
+  <!-- Inline script. To prevent Flash of Unstyled Content, Dark/Light theme
+       flash, early device size detection and feature flags. -->
+  <script></script>
+
+  <link rel="stylesheet" href="" />
+  <style></style>
+
+  <link rel="preload" href="" as="" />
+  <link rel="modulepreload" href="" />
+
+  <!-- Download. Wait for HTML to load. Execute. -->
+  <script src="" defer></script>
+
+  <link rel="prefetch" href="" />
+  <link rel="dns-prefetch" href="" />
+
+  <!-- Fixes `rem` on mobile. -->
+  <meta name="text-scale" content="scale" />
+  <!-- Set color for UI elements like scrollbar.
+       Use CSS `color-scheme` to adjust value on theme change. -->
+  <meta name="color-scheme" content="dark" />
+  <!-- PWA to set color of browser elements like top bar. -->
+  <meta name="theme-color" content="blue" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="rgba()" media="(prefers-color-scheme: dark)" />
+
+  <!-- Use full URL to the current page. Relevant to reference the original resource
+       when cross-posting the site on different platform. -->
+  <link rel="canonical" href="https://url/en-us/page" />
+  <!-- Add translation links -->
+  <link rel="alternate" hreflang="en-us" href="https://url/en-us/page" />
+  <link rel="alternate" hreflang="es" href="https://url/es/page" />
+  <link rel="alternate" hreflang="x-default" href="https://url/en-us/page" />
+
+  <!-- Generate favicon https://realfavicongenerator.net/ -->
+  <link rel="icon" href="favicon.svg" />
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Shown under page title and when bookmarking. -->
+  <meta name="description" content="Short and accurate summary of the page's content." />
+
+  <!-- Everything else after this -->
+</head>
+```
+
+## Content Sectioning
+
+### \<address>
+
+- Contact information like name, physical address, URL, email address, phone number, social media handle, geographic coordinates.
+- Usage
+  - Inside `<body>` to provide contact information of the website.
+  - Inside `<article>` to provide contact information of the article.
+
+```html
+<address>
+  You can contact author at
+  <a href="http://www.example.com/contact">www.example.com</a>.<br />
+  If you see any bugs, please
+  <a href="mailto:webmaster@example.com">contact webmaster</a>.<br />
+  You may also want to visit us:<br />
+  Mountain View, CA 94041<br />
+  USA
+</address>
+
+<article>
+  <footer>
+    <address>
+      By <a href="">Kushaj</a><br />
+      Email: <a href="">alex@semantics-weekly.com</a><br />
+      Office: 404 Syntax Lane, Suite 100, Athens, GA
+    </address>
+  </footer>
+</article>
+```
+
+### \<article>
+
+- Independent item of content, that can be consumed without the context of the website. Like blog post, forum post, news article, product card, user-submitted comments, interactive widget.
+  - When nesting `<article>`, the inner `<article>` represents content independent of the outer `<article>` like comments on blog post.
+- Usage
+  - Use `<h1> - <h6>` as child element to help identify the article.
+  - Link `<h1> - <h6>` using `aria-labelledby` on `<article>`.
+    - This will create a landmark region.
+    - For comments avoid this. Instead wrap all the comments in `<section>`.
+
+```html
+<article aria-labelledby="post-title">
+  <h2 id="post-title">Blog post title</h2>
+
+  <section aria-labelledby="comments-title">
+    <h2 id="comments-title">Comments (2)</h2>
+
+    <article class="comment"><h3></h3></article>
+    <article class="comment"><h3></h3></article>
+  </section>
+</article>
+```
+
+### \<aside>
+
+- Content that is only indirectly related to the main content, and the content can be removed without affecting the webpage.
+  - Sidebar content like trending topics, call-out box, glossary, footnotes, advertising blocks, profile snippet like About the author, related articles, recommended reading.
+- Usage
+  - Use `aria-label` or `aria-labelledby` if multiple `<aside>` are present.
+
+```html
+<article>
+  <h1>History of space exploration</h1>
+  <aside class="fun-fact-box"></aside>
+</article>
+
+<div class="page-layout">
+  <main></main>
+  <aside class="page-sidebar">
+    <h3>Trending topics</h3>
+
+    <h3>Advertisement</h3>
+  </aside>
+</div>
+```
+
+### \<footer>
+
+- Concluding content a section.
+  - Article - category tags, author bio, read more links.
+  - Component - timestamps, reply, flag, report buttons.
+  - Aside - logal disclaimers for a form, disclosure notes, view all links.
+  - Global page - copywright notice, links to privacy policy, sitemaps, social icons, contact info.
+- Does not have to necessariy appear at the bottom.
+
+### \<header>
+
+- Introductory content or navigational aids.
+  - Heading element, logo, search form, author name.
+- Usage
+  - Inside `<body>` to act as banner of the webpage and provide info like logo, name, search feature, global navigation, slogan.
+  - Inside `<article>`, `<main>`, `<section>`, `<nav>`, `<aside>` to provide introductory or navigational aids for the surrounding section. Place `<h1> - <h6>` inside.
+
+```html
+<header class="side-header">
+  <div class="logo"></div>
+  <nav></nav>
+</header>
+
+<section class="featured-content">
+  <header class="section-header">
+    <h2></h2>
+    <p>Introductory line</p>
+  </header>
+</section>
+
+<article class="blog-post">
+  <header class="article-header">
+    <h1></h1>
+    <div class="meta-data"></div>
+  </header>
+</article>
+```
+
+### \<h1> - \<h6>
+
+- To construct table of contents information.
+  - Users use this to quickly jump from heading to heading in order to determine the contents of the page.
+- Do not skip heading levels.
+- Usage
+  - Every page should have a single `<h1>` to describe the content of the page similar to `<title>`.
+
+### \<hgroup>
+
+- Group `<h1> - <h6>` with related content in `<p>` tag.
+  - Related content can be subheading, alternative title, tagline.
+
+```html
+<hgroup>
+  <h1>Title</h1>
+  <p>Last updated 12 July 2002</p>
+</hgroup>
+```
+
+### \<main>
+
+- Content unique to the current document. Content that is repeated like header, footer, sidebar, copyright info, search forums shouldn't be included.
+- Usage
+  - One per page.
+  - "skipnav" points to `<main>`.
+
+```html
+<body>
+  <a href="#main-content">Skip to main content</a>
+
+  <main id="main-content"></main>
+</body>
+```
+
+### \<nav>
+
+- Provide navigation links either within the current document or to other documents.
+  - Menus, table of contents, indexes.
+  - Prose can be used to provide navigation as well.
+- Usage
+  - Use `aria-label` or `aria-labelledby` if multiple `<nav>` are present.
+
+```html
+<header>
+  <nav aria-label="Primary navigation">
+    <ul>
+      <li><a href="">Home</a></li>
+    </ul>
+  </nav>
+</header>
+
+<footer>
+  <nav aria-label="Footer navigation"></nav>
+</footer>
+
+<nav>
+  <p>You are on my home page. To the north lies <a href="">my blog</a>.</p>
+  <p>To the south lies a dark and dank <a href="">contacts page</a>.</p>
+</nav>
+```
+
+### \<section>
+
+- Represent generic standalone section of a document, that does not fit it in other _Content Sectioning_ tags.
+- Usage
+  - Provide `aria-label` or `aria-labelledby`.
+  - Heading included most of the times.
+
+```html
+<section aria-labelledby="introduction">
+  <h2 id="introduction">Introduction</h2>
+  <p></p>
+</section>
+<section aria-labelledby="criteria">
+  <h2 id="criteria">Criteria</h2>
+  <p></p>
+</section>
+
+<section aria-label="Control Group">
+  <button></button>
+  <button></button>
+</section>
+```
+
+### \<search>
+
+- Represent part of document with `<form>` for search or filtering operation on the current page or the entire site.
+- Search results are part of `<main>`, not `<search>`.
+- Suggestions and "Quick search" are parts of `<search>`.
+- Usage
+  - Use `aria-label` or `aria-labelledby` if multiple `<search>` are present.
+
+```html
+<search>
+  <form action="">
+    <button>Search</button>
+  </form>
+</search>
+
+<search>
+  <input type="search" />
+
+  <section aria-label="Suggestions and quick links">
+    <h3>Results:</h3>
+    <ul id="results"></ul>
+    <output id="no-results"></output>
+  </section>
+</search>
+```
+
+## Block-Level Elements
+
+### \<blockquote>
+
+- Direct quote from an external source.
+- Source attribution
+  - `<blockquote cite="url">` - URL of source document.
+  - `<cite>` - Text representation of source. Place it outside `<blockquote>, <q>`.
+    - Title for creative work like book.
+    - Do not include name of person.
+- Highlight text similar to highlighting in a book using `<mark>`.
+
+```html
+<div>
+  <blockquote cite="url">
+    <p>Quote</p>
+  </blockquote>
+  <p>-Author, <cite>Source name</cite></p>
+</div>
+
+<p>As <cite></cite> wrote <q cite="url">inline quote.</q></p>
+```
+
+### \<div>
+
+- Used to group and style elements.
+- No semantic meaning.
+
+```html
+<div>
+  <p>Something <span>inline text</span></p>
+</div>
+```
+
+### \<dl>, \<dt>, \<dd>
+
+- Provide key-value pairs.
+  - Glossary.
+  - Recipe where ingredient is header and quantity is description.
+  - Transcript or conversations, where speaker name is header and spoken words are the description.
+- Use `<dfn>` when term is a definition.
+
+```html
+<dl>
+  <div>
+    <dt><dfn>Term</dfn></dt>
+    <dd>Description</dd>
+  </div>
+
+  <dt>Term</dt>
+  <dt>Term alternative</dt>
+  <dd>Description</dd>
+
+  <dt>Term</dt>
+  <dd>Description</dd>
+  <dd>Description alternative</dd>
+</dl>
+```
+
+### \<figure>, \<figcaption>
+
+- Represent self-contained content (similar to `<article>`) that is referenced in main flow of document, with optional caption.
+  - Image, diagram, code snippet, table, poem, quotation.
+- Figure support's the surrounding text, but does not depend on the exact paragraph for meaning.
+
+```html
+<figure>
+  <figcaption></figcaption>
+  <img />
+</figure>
+```
+
+### \<hr>
+
+- Represent a thematic break between paragraph-level elements.
+  - Change of scene, shift of topic within a section.
+  - New section within body of text where it's not necessary to have a heading.
+
+```html
+<p></p>
+
+<hr />
+
+<p></p>
+```
+
+### \<menu>, \<ol>, \<ul>, \<li>
+
+- `<menu>` - Same as `<ul>`, but items are interactive.
+- `<ol>` - Order of items matter for meaning of content.
+  - `reversed` - Reverse numbering. This does not reverse items.
+  - `start="3"`
+  - `type="1"` - If the ordering system is a convention of the document type or when list marker is referenced in the document. Example legal documents (Section 1, Article A).
+    - `a` lowercase letter
+    - `A` uppercase letter.
+    - `i` lowercase roman
+    - `I` uppercase roman.
+    - `1` number.
+- `<ul>` - Order of items is meaningless. Items are for display only.
+
+```html
+<menu>
+  <li><button>Copy</button></li>
+  <li><button>Paste</button></li>
+</menu>
+
+<ol type="i" reversed start="4">
+  <li>One</li>
+  <!-- To override list numbering -->
+  <li value="10">Three</li>
+  <li>Four</li>
+</ol>
+
+<ul>
+  <li>Item</li>
+  <li>Item</li>
+</ul>
+```
+
+### \<p>
+
+- Group related content.
+  - Images, form fields, block of text.
+- Screen readers provide shortcut to skip to next/previous paragraph.
+- Using block-level element inside `<p>` will autoclose `<p>`.
+
+```html
+<form>
+  <p>
+    <label>Name: <input /></label>
+  </p>
+
+  <p>
+    <label>Phone: <input type="tel" /></label>
+  </p>
+
+  <p>
+    <label>Email: <input type="email" /></label>
+  </p>
+
+  <fieldset>
+    <legend>Size</legend>
+    <p>
+      <label> <input type="radio" name="size" /> Small </label>
+    </p>
+    <p>
+      <label> <input type="radio" name="size" /> Medium </label>
+    </p>
+  </fieldset>
+
+  <p><button>Submit</button></p>
+</form>
+
+<form>
+  <p>Hello. My <label for="firstName">name</label> is <input id="firstName" type="text" />...</p>
+</form>
+```
+
+### \<pre>
+
+- Show preformatted text with Monospaced font.
+- First leading 1newline character is ignored.
+- Content parsed as HTML.
+  - Escape ambigious characters
+    1. Replace `&` with `&amp;`.
+    2. Replace `<` with `&lt;`.
+- Use `<figure>`, `role`, `aria-label` to provide alternate description to illustrations.
+
+```html
+<pre>
+  <code>
+body {
+  color: red;
+}
+  </code>
+</pre>
+
+<figure>
+  <pre role="img" aria-label="ASCII COW">
+\   ^__^
+  \  (oo)\_______
+    (__)\       )\/\
+        ||----w |
+        ||     ||
+  </pre>
+  <figcaption>The cow is illustrated using preformatted text characters.</figcaption>
+</figure>
+```
+
+## Inline Elements
+
+### \<a>
+
+- Hyperlink, file, email addresse, location in the same page.
+- Screen readers display list of all links on the page.
+  - Use `aria-hidden="true"` to prevent link from getting added to the list.
+- Link content (except text) should take at least 44x44 CSS pixels.
+- Usage
+  - `<a>Content</a>` - Use _content_ to describe where the link goes.
+    - Indicate when link will open in new tab, or is pointing to a resource other than a website. Example `External site (opens in new tab)`. Or `<img src="new-tab.svg" alt="(Opens in new tab)" />`.
+  - `downlaod` - Download the URL, with name specified by browser.
+    - `download="filename.extension"` - `\`, `/` are converted to `_`.
+  - `href` - Provide URL.
+    - `hreflang` - Provide hint at language of URL.
+  - `interestfor` - Popover API.
+  - `target` - Where to display URL.
+    - `_self` - Default. Current browsing content.
+    - `_blank` - New browsing content (tab or window). Specify `rel="noreferrer nofollow"` for external websites. `nofollow` instruct's crawler to not follow the link.
+  - `type` - Provide hint at MIME type of resource.
+
+```html
+<p>
+  <a href="url.ppt" target="_blank">
+    Report
+    <img src="powerpoint.svg" alt="(Powerpoint file)" />
+  </a>
+</p>
+```
+
+### \<abbr>
+
+- Abbreviation (e.g.) or acronym (NATO).
+- Spell out the abbreviation in parentheses instead of using `title` or Popover.
+- Wrap all abbreviation on page inside `<abbr>` to help screen readers with spelling.
+  - It might be better to wrap _kilometers_ in `<abbr>` and put _km_ in parenthesis, as speaking _kilometers_ makes more sense than speaking _kay emm_.
+
+```html
+<p>
+  You can use <abbr>CSS</abbr> (Cascading Style Sheets) to style your <abbr>HTML</abbr> (HyperText Markup Language).
+</p>
+
+<p>
+  <dfn id="html"><abbr>HTML</abbr></dfn> is a ...
+</p>
+<p><dfn id="spec">Specification</dfn> (<abbr>spec</abbr>) is a ...</p>
+```
+
+### \<b>
+
+- To draw attention to content without giving special importance.
+  - Keywords in summary, product names in review, boldface due to writing convention.
+- If there is no semantic meaning to using `<b>` element, use CSS `font-weight: bold` instead.
+
+```html
+<b>bold</b>
+```
+
+### \<bdi>
+
+- Tell browser's bidrectional algorithm to treat the content in isolation from its surrounding text.
+- Browser will infer the direction of content.
+- Browser algorithm can assign directionality to spaces, some punctuations based on the surrounding text. And this can mess up the correct output.
+  - `EMBEDDED-TEXT - 1st place` - Works in LTR
+  - `1 - EMBEDDED-TEXTst place` - Fails in RTL
+- Usage
+  - `<span dir='ltr'>text</span>` - When directionality of the content is known.
+  - `<bdi>text</bdi>` - When directionality is not known - for example, reading from database, user input.
+
+```html
+<span><bdi>EMBEDDED-TEXT</bdi> - 1st place</span>
+```
+
+### \<bdo>
+
+- Force browser to render content in the provided direction.
+- `<span dir="">` is more like a hint.
+
+```html
+<bdo dir="ltr">content</bdo>
+```
+
+### \<br>
+
+- Add line break in text, where the division of lines is insignificant.
+  - Poem, address.
+- Do not style.
+
+```html
+Address 1<br />
+City <br />
+```
+
+### \<cite>, \<q>
+
+- `<q>` - Inline element corresponding to [`<blockquote>`](#blockquote).
+
+### \<code>
+
+- Indicate the text is fragment is a single phrase of code.
+- Use `<pre>` for multiple lines of code.
+
+```html
+<p><code>selectAll()</code></p>
+
+<pre>
+    <code>
+let x = 1;
+let y = 2;
+    </code>
+</pre>
+```
+
+### \<del>, \<ins>
+
+- Range of text that has been deleted or inserted from document.
+- Not announced by screen readers. Use CSS for that.
+- Attributes
+  - `cite` - URI for resource that explains the change.
+  - `datetime` - Time and date of the change.
+
+```html
+<del>text</del> <ins>text</ins>
+```
+
+### \<dfn>
+
+- Indicate a term, whose definition can be found in the ancestor `<p>`, `<section>`.
+- Provide `id` to link to the definition using `<a>`.
+  - These links help user's find the definition of the term.
+
+```html
+<p>A <dfn id="#definition-validator">validator</dfn> is a program that checks for syntax...</p>
+
+<p>
+  The <dfn><abbr>HST</abbr></dfn> is among the ...
+</p>
+
+Using the <a href="#definition-validator">validator</a>, we can ...
+
+<dl>
+  <dt><dfn>RSS</dfn></dt>
+  <dd>An XML format for ...</dd>
+</dl>
+```
+
+### \<em>
+
+- Indicate stress emphasis (words carry a different, more prominent meaning compared to the surrounding text).
+- Nested `<em>` indicate a greater degree of emphasis.
+- Screen reader will pronounce the word using verbal stress.
+
+```html
+<p>Just <em>do</em> it already!</p>
+```
+
+### \<i>
+
+- Make the text look different from the normal prose for readability reasons, writing convention.
+  - Alternate voice or mood, taxonomic designations, iodiomatic term, technical terms, thoughts.
+- Screen reader will announce in normal tone.
+
+```html
+<p>The Lating phrase <i lang="la">Veni, vidi</i> is often ...</p>
+```
+
+### \<kbd>
+
+- Represent user input from some text entry device
+  - Keyboard - keystrokes
+  - Voice input - _Hey Google_
+  - Touch inputs
+  - Marking buttons pressed as part of some workflow, or specific menu options to be naviagted.
+
+```html
+<p>Use <kbd>help my-command</kbd> to view "my-command" documenation.</p>
+
+<p>
+  Create document using <kbd><kbd>Ctrl</kbd>+<kbd>N</kbd></kbd
+  >.
+</p>
+
+<samp><kbd>custom-git ad new-file.cpp</kbd></samp>
+
+<p>
+  To create new file, choose
+  <kbd
+    ><kbd><samp>File</samp></kbd
+    >=><kbd><samp>New Document</samp></kbd></kbd
+  >
+  menu option.
+</p>
+<p>
+  Press <kbd><samp>Ok</samp></kbd> to confirm.
+</p>
+```
+
+### \<mark>
+
+- To denote portion of document's content which is likely to be relevant to the user's current activity.
+  - Example, to indicate words that matched a search operation.
+- Screen readers do not announce `<mark>`, and people often disable announcing content that creates extra verbosity.
+  - Use `::before`, `::after` only when users need to know content has been highlighted.
+
+```html
+<style>
+  mark::before,
+  mark::after {
+    clip-path: inset(100%);
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  mark::before {
+    content: ' [highlight start] ';
+  }
+
+  mark::after {
+    content: ' [highlight end] ';
+  }
+</style>
+
+...<mark>Imperial</mark>...
+```
+
+### \<samp>
+
+- Static system message/output from computer program.
+  - The computer program can also be the terminal, in which case the command typed in the prompt is also part of `<samp>`.
+- `<output>` - output generated by code.
+
+```html
+<p>Utility will output <samp>Scan complete</samp>. Proceed to next step.</p>
+
+<pre>
+<samp>$ <kbd>md5 -s "Hello world"</kbd>
+MD5 ("Hello world") = 1231241523456tasd
+</samp>
+</pre>
+```
+
+### \<small>
+
+- Side comments and small print (copyright, legal text).
+
+```html
+<p><small>The content is licensed under ...</small></p>
+```
+
+### \<span>
+
+- Inline element corresponding to [`<div>`](#div).
+
+### \<strong>
+
+- Indicate content is of strong importance, seriousness, urgency, warnings.
+  - Importance can be in terms of the whole page or nearby Content.
+
+```html
+<p>... rule: <strong>never feed him after midnight</strong>.</p>
+
+<p><strong>Important:</strong> Before proceeding, ...</p>
+```
+
+### \<sub>, \<sup>
+
+- `<sub>` - subscript for typographic reason.
+  - Footnote number, science.
+
+```html
+<p>According to Johnson<sub>1</sub> this will ...</p>
+
+<p>
+  X-axis position is <var>x<sub>1</sub></var> ...
+</p>
+```
+
+- `<sup>` - superscript for typographic reason.
+  - Science, ordinal numbers like 4th, superior lettering.
+
+```html
+<var>c<sup>2</sup></var>
+```
+
+### \<time>
+
+- Provide machine readable representation of a period of time. Used be agents to add reminders, add to calendar feature.
+  - Time on 24-hour clock.
+  - Specific date, with optional time.
+  - Duration.
+- Do not use for dates older than Oct 1582 (start of Gregorian calendar).
+- `datetime` - Optional if content is same as `datetime` value.
+  - Date
+    - `YYYY-MM`
+    - `YYYY-MM-DD`
+    - `MM-DD`
+  - Time
+    - `HH:MM`
+    - `HH:MM:SS`
+    - `HH:MM:SS.mmm`
+  - Local date and time
+    - All combinations with `YYYY-MM-DD` with both space and `T` as separator.
+    - `YYYY-MM-DD HH:MM`
+    - `YYYY-MM-DD HH:MM:SS`
+    - `YYYY-MM-DD HH:MM:SS.mmm`
+    - `YYYY-MM-DDTHH:MM`
+    - `YYYY-MM-DDTHH:MM:SS`
+    - `YYYY-MM-DDTHH:MM:SS.mmm`
+  - Time zone
+    - `Z` - UTC+0 time
+    - `+HHMM`
+    - `+HH:MM`
+    - `-HHMM`
+    - `-HH:MM`
+  - `Global date and time
+    - Combination of local date and time (6) and time zone (5) strings.
+    - `2013-12-25 11:12:07.678+04:30`
+  - Week
+    - `YYYY-WWW` - `2013-W46`
+  - Year
+    - `YYYY`
+  - Duration
+    - P - Period. Start duration with _P_.
+    - D, H, M, S - Units i.e. Day, Hour, Minute, Second.
+    - d, h, m, s - Value of corresponding unit.
+    - T - Separate time from date.
+    - S, .XS, .XXS, .XXXS - to write second in decimals.
+    - `P dD`
+    - `P dD T hH mM sS` - `P12DT7H12M13S`
+    - `P dD T hH mM s.XS`
+    - `P dD T hH mM s.XXS`
+    - `P dD T hH mM s.XXXS`
+    - `P T hH mM sS`
+    - `P T hH mM s.XS`
+    - `P T hH mM s.XXS`
+    - `P T hH mM s.XXXS`
+    - `ww dd hh mm ss` - `7d 5h 24m 13s`
+
+```html
+<time datetime="2018-07-07">July 7</time>
+
+<time>2018-07-07</time>
+```
+
+### \<u>
+
+- Mark text to have non-textual annotation.
+  - Spelling error.
+
+```html
+<u>eror</u>
+```
+
+### \<var>
+
+- Represent name of variable.
+
+```html
+<var>E</var> = <var>m</var> <var>c<sup>2</sup></var> + 2
+
+<p>The variable <var>minSpeed</var> and <var>maxSpeed</var> control ...</p>
+```
+
+### \<wbr>
+
+- Hint to browser for work break opportunity.
+  - Long urls should break before punctuation.
+  - Long email address in responsive column, footer.
+
+```html
+https://kushaj<wbr />.com
+```
+
+## Media Elements
+
+### \<audio>, \<track>
+
+- Embed sound content.
+  - Use `<source>` to let browser choose the most appropriate.
+  - Provide caption using _WebVTT_ API. `<audio>` does not support WebVTT. `<video>` can be used instead.
+  - Provide transcript.
+  - Provide direct download link.
+- Attributes
+  - `autoplay` - Audio will automatically begin playback.
+  - `controls` - Browser will show controls to control audio playback - volume, seeking, pause/resume.
+  - `controlslist` - To modify the control options shown by browser.
+    - `controlslist="nodownload nofullscreen noremoteplayback"`
+  - `disableremoteplayback` - Disable remote playback.
+  - `loading`
+    - `loading="eager"` - Default. Load audio regardless if it in the viewport.
+    - `loading="lazy"` - Defer loading till the controls reach certain distance from the viewport. If you do not specify `controls` then audio will never load.
+  - `loop` - Audio player will loop at the end of the audio.
+  - `muted` - Audio will initially be muted.
+  - `preload` - Hint to browser.
+    - `preload="none"` - Audio should not be preloaded.
+    - `preload="metadata"` - Only audio metadata is fetched.
+    - `preload="auto"` - Whole audio file can be downloaded, even if user is not expecting to use it.
+  - `src` - URL of audio source.
+
+```html
+<figure>
+  <figcaption>Listen to T-Rex:</figcaption>
+  <audio controls src="">
+    <a href="" download=""> Download fallback link</a>
+  </audio>
+</figure>
+
+<audio controls>
+  <source src="" type="audio/mpeg" />
+  <source src="" type="audio/ogg" />
+
+  <a href="" download="">Download audio file</a>
+</audio>
+```
+
+### \<embed>
+
+- Embed external content in document.
+- Attributes
+  - `height`
+  - `src`
+  - `type`
+  - `width`
+
+```html
+<embed type="image/jpeg" src="" width="250" height="200" />
+```
+
+### \<fencedframe>
+
+- Similar to `<iframe>` but with more privacy features.
+- Cannot access DOM of embedded content. The embedded content cannot access DOM of the parent as well.
+- Cannot be manipulated with JS, except specific APIs.
+- Attributes
+  - `allow` - Permissions given to the embedded content from the parent.
+    - Protected Audience API
+    - Shared Storage API
+  - `height`
+  - `width`
+
+### \<iframe>
+
+- Embed external webpage into the current one.
+
+### \<img>
+
+- Images are not decoded on the main thread.
+- Browsers wait for the image to get near the viewport, before decoding.
+- Images are progressively renderd from top-to-bottom. In case of JPEG-XL, it is from blurry to sharp.
+- Attributes
+  - `alt` - Text replacement for the image's content.
+    - For images inside `<a>`, `<button>` describe what clicking the image does - `alt="next page"`.
+    - Using `alt=""` indicates the image is for decoration, and the broken image icon will not be shown.
+    - Value used when copying image to text, bookmarking an image url.
+  - `decoding`
+    - `decoding="sync"` - Image is decoded in its own thread. While the image is being decoded, the render is blocked. Once the image is decoded, the render step happens.
+    - `decoding="async"` - Image is decoded in its own thread. When it is ready to be showe, it is added to the render step. The main render pipeline is never blocked.
+    - Chrome/Safari use `sync` and Firefox uses `async` as default for images. Wordpress and NextJS uses `async` by default.
+  - `fetchpriority` - Hint to browser when to fetch the image, relative to other images.
+    - `high` - Use for images above the fold to optimize Largest Contentful Paint.
+    - `low`
+    - `auto` - Default. No preference.
+  - `height` - Height of image in pixels.
+  - `loading` - How to load the image
+    - `eager` - Default. Load the image immediately, regardless of whether it is in the visual viewport or not.
+    - `lazy` - Defer loading of image till it reaches a calculated distance from the viewport, as defined by the browser. If the image is part of the initial viewport, then the image loading will not start until the intial page load.
+  - `sizes` - Used when using `srcset` with _width descriptor_.
+    - Specify the intended display size of the image for various media conditions. `(width <= 500px) 1000px`.
+    - `sizes="auto"` - Let browser figure out the size of the rendered image. Use it only for images with `loading="lazy"`.
+  - `src` - Image URL.
+  - `srcset` - Comma separated strings. Provide URL and width of image or pixel density.
+    - `srcset="img2.png 2x"` - Use `img2.png` when the screen has pixel density of 2 times that of standard value, as defined by the browser. Otherwise use `src="img.png"` for normal pixel density displays. Use for fixed size images.
+    - `srcset="img2.png 450w"` - 450 is the intrinsic width of the image, and is divided by the source size defined in `sizes` to determine effective pixel density. Use for responsive images.
+  - `width` - Width of image in pixels.
+
+```html
+<img src="img.png" alt="" srcset="img.png 200w, img2.png 400w" sizes="(width <= 600px) 200px, 50vw" />
+```
+
+### \<picture>
+
+- Provide alternate versions of the image.
+  - Cropping and modifying images for different media conditions.
+  - Offering alternate image formats.
+- Sources are evaluated top-to-bottom, and the first match is shown to the user.
+
+```html
+<picture>
+  <source
+    srcset="small.jpg 480w, medium.jpg 800w, large.jpg 1200w"
+    sizes="(max-width: 600px) 400px, 800px"
+    type="image/jpeg"
+  />
+  <img src="fallback.jpg" alt="Example image" />
+</picture>
+```
+
+### \<source>
+
+- Provide alternate media resources for `<picture>`, `<audio>`, `<video>`.
+- Attributes
+  - `type` - MIME type and codecs information.
+  - `src` - URL of media source. Not needed with `<picture>`.
+  - `srcset` - Similar to `img` and used with `<picture>`.
+    - `sizes`
+  - `media` - Media query for the resource's intended media.
+  - `height`, `width` - For use with `<picture>`.
+
+### \<video>, \<track>
+
+- Provide both captions and transcripts. Caption should not obstruct the main subject of the video.
+- `autoplay` - Videos with unmuted audio, do not autoplay.
+- `controls` - Show browser controls.
+- `controlslist="nodownload nofullscreen noremoteplayback"`
+- `disablepictureinpicture`
+- `disableremoteplayback`
+- `height`, `width` - Pixel value of the media player.
+- `loading`
+  - `eager` - default.
+  - `lazy`
+- `loop`
+- `muted`
+- `playsinline`
+- `poster` - Thumbnail picture url.
+- `preload`
+- `src`
+
+```html
+<video controls width="">
+  <source src="" type="video/webm" />
+  <source src="" type="video/mp4" />
+
+  <a href="" download="">Download video fallback</a>
+</video>
+```
+
+## Scripting elements
+
+### \<canvas>
+
+- Used with WebGL API, Canvas Scripting API to draw graphics and animations.
+  - OffscreenCanvas API can be used to render the canvas using a dedicated worker thread.
+- Browser's have a maximum width and height for canvas.
+- Canvas is not exposed to screen readers.
+- Attributes
+  - `height`
+  - `width`
+
+```html
+<canvas width="120" height="120"> An alternative text describing what your canvas displays. </canvas>
+```
+
+### \<noscript>
+
+- Show block of HTML if scripting is disabled.
+- People using this feature are used to websites breaking. Provide a simple, unobstrusive, and friendly message to enable it.
+- An alternate URL can be provided to use the site without JS.
+
+```html
+<noscript>
+  <p>
+    <strong>Just a quick heads-up!</strong> This site works best with JavaScript enabled. If you prefer to keep it off,
+    you can use our <a href="/no-js-version">Non-JS alternate site</a>.
+  </p>
+</noscript>
+```
+
+### \<script>
+
+- Attributes
+  - `async` - Download in parallel. After downloading, stop rendering and execute the script.
+  - `blocking` - Block certain actions until the script has executed.
+    - `blocking="render"` - Rendering of content is blocked.
+  - `defer` - Download in parallel. Wait for HTML to be parsed, and then execute the script. This happends before `DOMContentLoaded` event.
+  - `fetchpriority` - Hint to browser. `high`, `low`, `auto`.
+  - `integrity` - Provide hash to verify integrityh of script.
+  - `nomodule` - Do not execute the script in browser that support ES modules. Essentially providing fallback for old browsers.
+  - `nonce` - For CSP.
+  - `src` - URI of external script.
+  - `type` - Type of script.
+    - Attribute not set, empty, JS MIME type - Classic script.
+    - `importmap` - Specify how to laod modules when using JS modules.
+    - `module` - JS module. Execution is deferred.
+    - `speculationrules` - What resources to prefetch or prerender.
+    - MIME type
+
+## Table elements
+
+### \<table>
+
+- `role`
+  - `role="table"` - Default. Data arranged in rows and columns.
+  - `role="grid"` - If table maintains selection state, has two-dimensional navigation, or allows user to rearrange cell order.
+  - `role="treegrid"` - If rows of the `grid` can be expanded and collapsed.
+  - `role="none"` - When using a table not for its intended purpose.
+- `headers` attribute on `<th>` can be used to provide space separated list of `<th>` id's, in case of complex tables.
+
+```html
+<p id="table-summary">Longer summary</p>
+
+<table role="grid" aria-describedby="table-summary">
+  <caption>
+    Summary
+  </caption>
+
+  <colgroup>
+    <col />
+  </colgroup>
+
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <!-- Can provide row header as well -->
+      <th></th>
+      <td></td>
+    </tr>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <td></td>
+    </tr>
+  </tfoot>
+</table>
+```
+
+### \<caption>
+
+- Describe the table's purpose, and help people decide if they need to check the rest of the table or skip over it.
+- Alternatively provide `aria-label` or `aria-labelledby` on `<table>`.
+- Provide summary of the table in `<caption>`. Provide longer summary in the `<p>` - connected by `aria-describedby`.
+- `<caption>` should be the first child of `<table>`. Inside a `<figure>`, `<figcaption>` should be used.
+
+### \<colgroup>
+
+- Define group of columns.
+- Define after `<caption>` and before `<thead>`.
+- In CSS
+  - `visibility: collapse;` to hide the entire column.
+  - `width` to specify min-width, as it `min-width` was set.
+- Attribute
+  - `span` - How many columns to span.
+
+```html
+<!-- Example 1 -->
+<colgroup>
+  <col />
+  <col span="2" />
+</colgroup>
+
+<!-- Example 2 -->
+<colgroup span="2"></colgroup>
+<colgroup span="5"></colgroup>
+```
+
+### \<col>
+
+- Define one or more columns in column group. Used when you want to style the columns in a group individually.
+- Attribute
+  - `span`
+
+### \<thead>
+
+- Head of table with information about the table's columns.
+
+### \<tbody>
+
+- Main data of table.
+- Multple `<tbody>` can be used, and each group of rows can be separately formatted.
+- If `<tbody>` is not specified, then browser will add it automatically. This can become an issue with styling, if the quirk is not known.
+
+### \<tfoot>
+
+- Information giving summary of the column - like sum of all numbers in a column.
+
+### \<tr>
+
+- To define row.
+
+### \<th>
+
+- Define header cell. Can be column or row.
+- Best to provide `scope`, in case some assistive technology fails to infer correctly.
+- Attributes
+  - `abbr` - Alternative label.
+  - `colspan` - Max is 1000.
+  - `headers` - space separated strings corresponding to the `id` of `<th>` that provide the headers for this header cell.
+    - If header contains sub-headers, then header will get list of all sub-header's ids.
+    - Sub-headers will get id of the parent.
+
+    ```html
+    <tr>
+      <th id="parent" headers="left right">Left</th>
+    </tr>
+
+    <tr>
+      <th id="left" headers="parent">Left</th>
+      <th id="right" headers="parent">Right</th>
+    </tr>
+    ```
+
+  - `rowspan` - Value of 0, will extend to the end of the grouping section `tbody, tfoot, thead`. Max is 65534.
+  - `scope`
+    - `scope="row"` - header relates to all cells of the row it belongs to
+    - `scope="col"`
+    - `scope="rowgroup"`
+    - `scope="colgroup"`
+
+### \<td>
+
+- Attributes
+  - `colspan`
+  - `headers`
+  - `rowspan`
